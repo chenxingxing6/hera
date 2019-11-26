@@ -1,37 +1,16 @@
+# 大数据任务调度系统(HERA) 
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
-
-# 数据平台打造的任务调度系统(HERA)
-
-[![Build Status](https://travis-ci.org/scxwhite/hera.svg?branch=open-source)](https://travis-ci.org/scxwhite/hera)
-[![](https://www.jitpack.io/v/scxwhite/hera.svg)](https://www.jitpack.io/#scxwhite/hera)
-
-目前接入hera的公司（[点我接入](https://github.com/scxwhite/hera/issues/24)）：
+目前接入hera的公司：
 - 杭州二维火科技有限公司
 - 杭州涂鸦科技有限公司
-- 北京高因科技（居理新房）有限公司
-- 盈亚科技有限公司
-- 北京智融时代信息技术有限公司
-- 卓尔智联集团(02098·HK)
-- 北京果敢时代科技有限公司（大V店）
 - 中通天鸿-中国领先的云计算呼叫中心平台及人工智能科技公司
 - 杭州-呆萝卜
-- 微神马科技（大连）有限公司
-- 上海骅天技术服务有限公司
 - 浙江格家网络技术有限公司
 - 紫梧桐（北京）资产管理有限公司 (蛋壳公寓)
 - 海拍客
-- 持续更新中。。欢迎大家自荐
+- ........
 
-# 交流群
-
-个人微信(已满99人，需要我拉你进去)
-
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190102190821351.png)
-# 赞助
-![开源不易，感谢支持](https://img-blog.csdnimg.cn/20191114120009558.png)
-
-开源不易，感谢支持
+---
 
 # 介绍文章
 [操作文档](https://github.com/scxwhite/hera/blob/hera-master/hera-admin/src/main/resources/static/help/help.md)
@@ -47,12 +26,15 @@
 [赫拉(hera)分布式任务调度系统之版本(四)](https://blog.csdn.net/su20145104009/article/details/85778303)
 
 [赫拉(hera)分布式任务调度系统之Q&A(五)](https://blog.csdn.net/su20145104009/article/details/86076137)
-## 前言
-在大数据平台，随着业务发展，每天承载着成千上万的ETL任务调度，这些任务集中在hive,shell脚本调度。怎么样让大量的ETL任务准确的完成调度而不出现问题，甚至在任务调度执行中出现错误的情况下，任务能够完成自我恢复甚至执行错误告警与完整的日志查询。`hera`任务调度系统就是在这种背景下衍生的一款分布式调度系统。随着hera集群动态扩展，可以承载成千上万的任务调度。它是一款原生的分布式任务调度，可以快速的添加部署`wokrer`节点，动态扩展集群规模。支持`shell,hive,spark`脚本调度,可以动态的扩展支持`python`等服务器端脚本调度。 
 
->hera分布式任务调度系统是根据前阿里开源调度系统(`zeus`)进行的二次开发，其中zeus大概在2014年开源，开源后却并未进行维护。我公司(二维火)2015年引进了zeus任务调度系统，一直使用至今年11月份，在我们部门乃至整个公司发挥着不可替代的作用。在我使用zeus的这一年多，不得不承认它的强大，只要集群规模于配置适度，他可以承担数万乃至十万甚至更高的数量级的任务调度。但是由于zeus代码是未维护的，前端更是使用GWT技术，难于在`zeus`上面进行维护。我与另外一个小伙伴(花名：凌霄，现在阿里淘宝部门)于今年三月份开始重写`zeus`，改名赫拉(hera)
-    
-```***项目地址：git@github.com:scxwhite/hera.git  ***```
+## 前言
+在大数据平台，随着业务发展，每天承载着成千上万的ETL任务调度，这些任务集中在hive,shell脚本调度。怎么样让大量的ETL任
+务准确的完成调度而不出现问题，甚至在任务调度执行中出现错误的情况下，任务能够完成自我恢复甚至执行错误告警与完整的日志
+查询。`hera`任务调度系统就是在这种背景下衍生的一款分布式调度系统。随着hera集群动态扩展，可以承载成千上万的任务调度。
+它是一款原生的分布式任务调度，可以快速的添加部署`wokrer`节点，动态扩展集群规模。支持`shell,hive,spark`脚本调度,可
+以动态的扩展支持`python`等服务器端脚本调度。 
+
+
 ## 架构
 `hera`系统只是负责调度以及辅助的系统，具体的计算还是要落在`hadoop、hive、yarn、spark`等集群中去。所以此时又一个硬性要求，如果要执行`hadoop，hive，spark`等任务，我们的`hera`系统的`worker`一定要部署在这些集群某些机器之上。如果仅仅是`shell`,那么也至少需要`linux`系统。对于`windows`系统，可以把自己作为`master`进行调试。
 
@@ -91,187 +73,15 @@
  - 支持阿里云emr的自动创建、销毁
  - 支持亚马逊emr的自动创建、销毁、弹性伸缩
  - （还有更多，等待大家探索）
-# 安装部署与启动
+
+# 安装部署与启动（看2.4.1这个版本）
+- 创建表
+- 修改配置（数据源）
+- 运行（直接Idea运行，或者打包部署）
+- 访问（localhost:8080/hera/login/admin）
 
 
-## 创建表
-当使用`git`把`hera`克隆到本地之后，首先在`hera/hera-admin/resources`目录下找到`hera.sql`文件，在自己的数据库中新建这些必要的表，并插入初始化的数据（如果你目前使用的是低版本的hera，那么你可以到 [update](https://github.com/scxwhite/hera/tree/hera-master/update/sql) 目录查看是否有你的 `hera` 版本升级的 `ddl` ，如果有请根据你的版本依次执行 `ddl` 语句）
-
-此时可以在`hera/hera-admin/resources`目录下找到`application.yml`文件。在文件里修改数据源`hera`的数据源(修改`druid.datasource`下的配置)即可进行下面的操作。
-
-```yml
-spring:
-    profiles:
-        active: @env@	##当前环境 打包时通过-P来指定
-    http:
-        multipart:
-          max-file-size: 100Mb    #允许上传文件的最大大小
-          max-request-size: 100Mb  #允许上传文件的最大大小
-    freemarker:
-      allow-request-override: true
-      cache: false
-      check-template-location: true
-      charset: utf-8
-      content-type: text/html
-      expose-request-attributes: false
-      expose-session-attributes: false
-      expose-spring-macro-helpers: false
-      suffix: .ftl
-      template-loader-path: classpath:/templates/
-      request-context-attribute: request
-
-druid:
-  datasource:
-    username: root  #数据库用户名
-    password: XIAOSUDA      #数据库密码
-    driver-class-name: com.mysql.jdbc.Driver  #数据库驱动
-    url: jdbc:mysql://localhost:3306/hera?characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&allowMultiQueries=true
-    initial-size: 5    #初始化连接池数量
-    min-idle: 1        #最小生存连接数
-    max-active: 16     #最大连接池数量
-    max-wait: 5000 #获取连接时最大等待时间，单位毫秒。配置了maxWait之后，缺省启用公平锁，并发效率会有所下降，如果需要可以通过配置useUnfairLock属性为true使用非公平锁。
-    time-between-connect-error-millis: 60000  # Destroy线程会检测连接的间隔时间，如果连接空闲时间大于等于minEvictableIdleTimeMillis则关闭物理连接，单位是毫秒
-    min-evictable-idle-time-millis: 300000  # 连接保持空闲而不被驱逐的最长时间，单位是毫秒
-    test-while-idle: true    #申请连接的时候,如果检测到连接空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效
-    test-on-borrow: true    #申请连接时执行validationQuery检测连接是否有效
-    test-on-return: false   # 归还连接时执行validationQuery检测连接是否有效
-    connection-init-sqls: set names utf8mb4
-    validation-query: select 1                #用来检测连接是否有效的sql，要求是一个查询语句。如果validationQuery为null，testOnBorrow、testOnReturn、testWhileIdle都不会其作用。
-    validation-query-timeout: 1                #单位：秒，检测连接是否有效的超时时间。底层调用jdbc Statement对象的void setQueryTimeout(int seconds)方法
-    log-abandoned: true
-    stat-mergeSql: true
-    filters: stat,wall,log4j
-    connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-
-server:
-  port: 8080
-  context-path: /hera
-
-clean:
-   path: ${server.context-path}
-#hera全局配置
-hera:
-   defaultWorkerGroup : 1 #默认worker的host组id
-   preemptionMasterGroup : 1  #抢占master的host组id
-   excludeFile: jar;war
-   maxMemRate : 0.80       #已使用内存占总内存的最大比例,默认0.80。当worker内存使用达到此值时将不会再向此work发任务
-   maxCpuLoadPerCore : 1.0   #cpu load per core等于最近1分钟系统的平均cpu负载÷cpu核心数量，默认1.0。当worker平均负载使用达到此值时将不会再向此work发任务
-   scanRate : 1000        #任务队列扫描频率(毫秒)
-   systemMemUsed : 4000  # 系统占用内存	
-   perTaskUseMem : 500   # 假设每个任务使用内存500M
-   requestTimeout: 10000 # 异步请求超时时间	
-   channelTimeout: 1000 # netty请求超时时间		
-
-   heartBeat : 3           # 心跳传递时间频率
-   downloadDir : /opt/logs/spring-boot
-   hdfsUploadPath : /hera/hdfs-upload-dir/ #此处必须是hdfs路径，所有的上传附件都会存放在下面路径上.注意:必须保证启动hera项目的用户是此文件夹的所有者，否则会导致上传错误
-   schedule-group : online
-   maxParallelNum: 2000   #master 允许的最大并行任务 当大于此数值 将会放在阻塞队列中
-   connectPort : 9887 #netty通信的端口
-   admin: biadmin         # admin用户
-   taskTimeout: 12  #单个任务执行的最大时间  单位：小时
-   env: @env@
-
-# 发送配置邮件的发送者
-mail:
-  host: smtp.mxhichina.com
-  protocol: smtp
-  port: 465
-  user: xxx
-  password: xxx
-
-logging:
-  config: classpath:logback-spring.xml
-  path: /opt/logs/spring-boot
-  level:
-    root: INFO
-    org.springframework: ERROR
-    com.dfire.common.mapper: ERROR
-
-
-mybatis:
-  configuration:
-    mapUnderscoreToCamelCase: true
-#spark 配置
-spark :
-  address : jdbc:hive2://localhost:10000
-  driver : org.apache.hive.jdbc.HiveDriver
-  username : root
-  password : root
-  master : --master yarn
-  driver-memory : --driver-memory 1g
-  driver-cores : --driver-cores 1
-  executor-memory : -- executor-memory 1g
-  executor-cores : --executor-cores 1
-
----
-## 开发环境
-spring:
-  profiles: dev
-
-logging:
-  level:
-    com.dfire.logs.ScheduleLog: ERROR
-    com.dfire.logs.HeartLog: ERROR
-
----
-## 日常环境  通常与开发环境一致
-spring:
-  profiles: daily
-
----
-## 预发环境
-spring:
-  profiles: pre
-druid:
-  datasource:
-    url: jdbc:mysql://localhost:3306/lineage?characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&allowMultiQueries=true
-    username: root
-    password: root
-#spark 配置
-spark :
-  address : jdbc:hive2://localhost:10000  #spark地址
-  master : --master yarn
-  driver-memory : --driver-memory 2g
-  driver-cores : --driver-cores 1
-  executor-memory : -- executor-memory 2g
-  executor-cores : --executor-cores 1
----
-## 正式环境
-spring:
-  profiles: publish
-druid:
-  datasource:
-    url: jdbc:mysql://localhost:3306/lineage?characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&allowMultiQueries=true
-    username: root
-    password: root
-#spark 配置
-spark :
-  address : jdbc:hive2://localhost:10000
-  master : --master yarn
-  driver-memory : --driver-memory 2g
-  driver-cores : --driver-cores 1
-  executor-memory : -- executor-memory 2g
-  executor-cores : --executor-cores 1
-
-```
-
-## 打包部署
-当上面的操作完成后，即可使用`maven`的打包命令进行打包
-
-```
-mvn clean package -Dmaven.test.skip=true -Pdev
-```
-打包后可以进入`hera-admin/target`目录下查看打包后的`hera-dev.jar` 。此时可以简单使用`java -server -Xms4G -Xmx4G -Xmn2G -jar hera.jar `启动项目，此时即可在浏览器中输入
-
-```
-localhost:8080/hera/login/admin
-```
-即进入登录界面，账号为`hera` 密码为`biadmin`,点击登录即进入系统。
-
-><font color='red'>注：目前hera有用户账户和组账户之分，默认跳转的登录地址为用户账户，需要用户注册（用户需要归属于一个组账户），然后hera组账户在用户管理里页面审核通过后即可登录用户账户。</font>
-
-顺便附上我的启动脚本
+启动脚本
 
 ```shell
 #!/bin/sh
@@ -306,45 +116,26 @@ fi
 
 ```bash
 #!/bin/bash
-pid=`ps aux| grep java | grep hera | awk '{print $2}'`
+pid=`ps | grep java | grep hera | awk '{print $1}'`
 
 [ ! $pid ] && echo "找不到hera的进程,请确认hera已经启动" && exit 0
 
 res=`kill -9 $pid`
 
 echo 关闭hera成功，pid:$pid
-
-
 ```
- **[注：2.4.1及以上版本已经集成启动和关闭的sh]**
- 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2019111411090872.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9zY3gtd2hpdGUuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
-
-如果你的 `hera` 使用的是 `2.4.1` 版本以上的，打包后在根目录会出现如图所示的压缩包
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191114111031525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9zY3gtd2hpdGUuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
-
-你可以通过 `ssh` 把该包上传到服务器，然后修改 `config` 目录下的`application.yml` 配置文件，在 `bin` 目录里执行 `start.sh` 脚本即可成功启动`hera`。
-
 
 ## 测试
 此时就登录上了。下面需要做的是在`worker`管理这里添加执行任务的机器`IP`，然后选择一个机器组（组的概念：对于不同的`worker`而言环境可能不同，可能有的用来执行`spark`任务，有的用来执行`hadoop`任务，有的只是开发等等。当创建任务的时候根据任务类型选择一个组，要执行任务的时候会发送到相应的组的机器上执行任务）。
 对于执行`work`的机器`ip`调试时可以是`master`，生产环境建议不要让`master`执行任务。如果要执行`map-reduce`或者`spark`任务，要保证你的`work`具有这些集群的客户端。
 那么我们就在`work`管理页面增加要执行的`work`地址以及机器组。
-
-
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181225102855978.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1MjAxNDUxMDQwMDk=,size_16,color_FFFFFF,t_70)
-
 此时有30分钟的缓冲时间，`master` 才会检测到该 `work` 加入。为了测试，此时我们可以通过重启 `master` 来立刻使该 work` 加入执行组（后面会增加一键刷新 `work` 信息）。
+> 此时要注意，我们的 work 也一定也要安装 hera 应用并启动。
 
-    此时要注意，我们的 work 也一定也要安装 hera 应用并启动。
 
-重启后我们可以进入调度中心 ，在搜索栏里搜索 `1` ，然后按回车
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181225103951766.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1MjAxNDUxMDQwMDk=,size_16,color_FFFFFF,t_70)
-
-会发现一个 `echoTest` 任务 ，此时我们还不能执行任务，因为我们的所有任务的执行者登录用户。比如此刻我使用 `hera` 登录的，那么此时一定要保证你的 `work` 机器上有 `hera` 这个用户。
-否则执行任务会出现 `sudo: unknown user: hera` 异常。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181225104307920.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1MjAxNDUxMDQwMDk=,size_16,color_FFFFFF,t_70)
-
+## 问题
+#### 1.sudo: unkonw user:hera
 此时可以向我们填写的 `work` 机器上增加 `hera` 用户。
 
     useradd hera
@@ -357,14 +148,9 @@ echo 关闭hera成功，pid:$pid
     sudo  dscl . -create /Users/hera UniqueID "1024"
     sudo  dscl . -create /Users/hera PrimaryGroupID 80
     sudo  dscl . -create /Users/hera NFSHomeDirectory /Users/hera
+    
 
->此时点击手动执行->选择版本->执行。此时该任务会运行，点击右上角的查看日志，可以看到任务的执行记录。
-
-此时如果任务执行失败，`error` 日志内容为
-
-```
-sudo: no tty present and no askpass program specified
-```
+#### 2.sudo: no tty present and no askpass program specified
 
 那么此时要使你启动` hera` 项目的用户具有 `sudo -u hera` 的权限(无须输入`root`密码，即可执行 `sudo -u hera echo 1` ，具体可以在 `sudo visudo` 中配置)。
 比如我启动 `hera` 应用的用户是 `wyr`
@@ -376,46 +162,10 @@ sudo: no tty present and no askpass program specified
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181228103306280.png)
 这样就会在切换用户的时候无须输入密码。当然如果你使用的是`root`用户启动，即可跳过这段。
 
-由于在 `hera` 中还用到了 `dos2unix` ，需要在执行任务的`work`上安装 `dos2unix` 工具。
-
+#### 3.dos2unix安装
 ```
-yum install dos2unix
+linux：yum install dos2unix
+
+mac os：brew install dos2unix
 ```
-
-如果一切配置完成，那么即可看到输出任务执行成功的日志。
-
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181228103625553.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1MjAxNDUxMDQwMDk=,size_16,color_FFFFFF,t_70)
-至此 已经完成了 任务的手动执行。
-
-
-## TIPS
-当然在部署的时候可能会出现各种状况。
-比如：`work` 无法连接到 `master`，连接时抛出
-
-```
-java.net.NoRouteToHostException: 没有到主机的路由
-```
-这个时候请注意，我们的master使用的端口是：`9887`。需要在每台 `hera` 机器上的防火墙开启此端口（最好关闭防火墙 `sudo service iptables stop` ）。
-
-还有一种情况： `work` 可以连接上 `master` ，但是在`master`日志中发现 `work` 总是一段时间后断开。原因是：`hera` 各个机器的时间不一致，修改一下
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-<table>
-  <tr>
-    <td align="center"><a href="https://blog.csdn.net/su20145104009/"><img src="https://avatars2.githubusercontent.com/u/23207189?v=4" width="100px;" alt="苏承祥"/><br /><sub><b>苏承祥</b></sub></a><br /><a href="#design-scxwhite" title="Design">🎨</a></td>
-    <td align="center"><a href="https://blog.csdn.net/Pengjx2014"><img src="https://avatars2.githubusercontent.com/u/34758993?v=4" width="100px;" alt="凌霄"/><br /><sub><b>凌霄</b></sub></a><br /><a href="#design-jiangeyu" title="Design">🎨</a></td>
-    <td align="center"><a href="https://github.com/akong0115"><img src="https://avatars3.githubusercontent.com/u/26199270?v=4" width="100px;" alt="akong0115"/><br /><sub><b>akong0115</b></sub></a><br /><a href="#design-akong0115" title="Design">🎨</a></td>
-    <td align="center"><a href="https://github.com/Deegue"><img src="https://avatars3.githubusercontent.com/u/25916266?v=4" width="100px;" alt="Yizhong Zhang"/><br /><sub><b>Yizhong Zhang</b></sub></a><br /><a href="#design-Deegue" title="Design">🎨</a></td>
-    <td align="center"><a href="https://github.com/jet2007"><img src="https://avatars3.githubusercontent.com/u/3906077?v=4" width="100px;" alt="jet2007"/><br /><sub><b>jet2007</b></sub></a><br /><a href="#design-jet2007" title="Design">🎨</a></td>
-
- </tr>
-</table>
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+---
